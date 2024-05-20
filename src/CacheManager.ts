@@ -1,9 +1,9 @@
 // @ts-ignore
 import SHA1 from 'crypto-js/sha1';
-import { FileStat, FileSystem } from 'react-native-file-access';
+import { FileInfo, FileSystem } from './FileManager';
 
-import { Config, DownloadOptions } from './types';
 import defaultConfiguration from './defaultConfiguration';
+import { Config, DownloadOptions } from './types';
 
 async function retry(
   fn: () => any,
@@ -251,11 +251,11 @@ export default class CacheManager {
 
     const files = await FileSystem.statDir(CacheManager.config.baseDir);
 
-    files.sort((a: FileStat, b: FileStat) => {
-      return a.lastModified - b.lastModified;
+    files.sort((a: FileInfo, b: FileInfo) => {
+      return a.modificationTime - b.modificationTime;
     });
 
-    const currentCacheSize = files.reduce((cacheSize, file: FileStat) => {
+    const currentCacheSize = files.reduce((cacheSize, file: FileInfo) => {
       return cacheSize + file.size;
     }, 0);
 
@@ -265,9 +265,9 @@ export default class CacheManager {
       while (overflowSize > 0 && files.length) {
         const file = files.shift();
         if (file) {
-          if (await FileSystem.exists(file.path)) {
+          if (await FileSystem.exists(file.uri)) {
             overflowSize = overflowSize - file.size;
-            await FileSystem.unlink(file.path).catch(e => {
+            await FileSystem.unlink(file.uri).catch(e => {
               if (__DEV__) {
                 console.log(e);
               }
@@ -307,8 +307,8 @@ const getCacheEntry = async (
   const exists = await FileSystem.exists(path);
 
   if (maxAge && exists) {
-    const { lastModified } = await FileSystem.stat(path);
-    const ageInHours = Math.floor(Date.now() - lastModified) / 1000 / 3600;
+    const { modificationTime } = await FileSystem.stat(path);
+    const ageInHours = Math.floor(Date.now() - modificationTime) / 1000 / 3600;
     if (maxAge < ageInHours) {
       await FileSystem.unlink(path);
       return { exists: false, path };

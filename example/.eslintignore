@@ -1,8 +1,0 @@
-node_modules/
-index.js
-metro.config.js
-babel.config.js
-routes.tsx
-
-# jest
-jest.config.*

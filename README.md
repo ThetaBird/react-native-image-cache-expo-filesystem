@@ -75,10 +75,10 @@ For react native >= 0.65 use [`react-native-file-access`](https://github.com/alp
 
 ```tsx
 import { CacheManager } from '@georstat/react-native-image-cache';
-import { Dirs } from 'react-native-file-access';
+import * as FileSystem from 'expo-file-system';
 
 CacheManager.config = {
-  baseDir: `${Dirs.CacheDir}/images_cache/`,
+  baseDir: `${FileSystem.cacheDirectory}/images_cache/`,
   blurRadius: 15,
   cacheLimit: 0,
   maxRetries: 3 /* optional, if not provided defaults to 0 */,
@@ -150,7 +150,7 @@ import { CachedImage } from '@georstat/react-native-image-cache';
 Accepts 2 parameters:
 
 | Parameter | Type              | Description                                                                            |
-|-----------|-------------------|----------------------------------------------------------------------------------------|
+| --------- | ----------------- | -------------------------------------------------------------------------------------- |
 | `image`   | `Array or String` | (Required) uri of remote image or array of remote uri strings                          |
 | `options` | `Object`          | (Optional) custom options for the fetch image http request eg. `{headers:{}, body:{}}` |
 
@@ -175,7 +175,7 @@ CacheManager.prefetch(urls); // prefetch mutliple images
 Accepts 2 parameters:
 
 | Parameter | Type     | Description                                                                            |
-|-----------|----------|----------------------------------------------------------------------------------------|
+| --------- | -------- | -------------------------------------------------------------------------------------- |
 | `image`   | `String` | (Required) uri of remote image                                                         |
 | `options` | `Object` | (Optional) custom options for the fetch image http request eg. `{headers:{}, body:{}}` |
 
@@ -220,7 +220,7 @@ await CacheManager.isImageCached(uri);
 #### `CachedImage` accepts the following props:
 
 | Properties                       | PropType             | Description                                                                                                                                                                                                    |
-|----------------------------------|----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| -------------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `source`                         | `String`             | (**Required**) Uri of image.                                                                                                                                                                                   |
 | `sourceAnimationDuration`        | `Number`             | `source` image animation duration when loading, defaults to `1000`ms (overrides config)                                                                                                                        |
 | `thumbnailSource`                | `String`             | (**Required**) Uri of the thumbnail image                                                                                                                                                                      |

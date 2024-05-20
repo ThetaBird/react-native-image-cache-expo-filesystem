@@ -1,5 +1,5 @@
 {
-  "name": "@georstat/react-native-image-cache",
+  "name": "@thetabird/react-native-image-cache-expo-file-system",
   "version": "3.1.0",
   "access": "public",
   "description": "React Native image file system caching for iOS and Android",
@@ -19,13 +19,13 @@
     "cache",
     "file system image cache"
   ],
-  "repository": "https://github.com/georstat/react-native-image-cache",
-  "author": "Efstathios Ntonas - George Bakogiannis - George Kallinikos",
+  "repository": "https://github.com/thetabird/react-native-image-cache-expo-file-system",
+  "author": "Max Jikharev - Efstathios Ntonas - George Bakogiannis - George Kallinikos",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/georstat/react-native-image-cache/issues"
+    "url": "https://github.com/thetabird/react-native-image-cache-expo-file-system/issues"
   },
-  "homepage": "https://github.com/georstat/react-native-image-cache",
+  "homepage": "https://github.com/thetabird/react-native-image-cache-expo-file-system",
   "scripts": {
     "tsc": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
@@ -37,12 +37,12 @@
     "bootstrap": "yarn install && yarn example"
   },
   "dependencies": {
-    "crypto-js": "^4.1.1"
+    "crypto-js": "^4.1.1",
+    "expo-file-system": "^17.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
-    "@evilmartians/lefthook": "^1.4.10",
     "@react-native/eslint-config": "^0.72.2",
     "@release-it/conventional-changelog": "^7.0.1",
     "@types/react": "^18.2.11",
@@ -63,12 +63,10 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-native-a11y": "^3.3.0",
     "jest": "^29.6.4",
-    "lefthook": "^1.4.10",
     "prettier": "^3.0.3",
     "react": "18.2.0",
     "react-native": "^0.72.4",
     "react-native-builder-bob": "^0.21.3",
-    "react-native-file-access": "^3.0.4",
     "react-native-reanimated": "3.4.2",
     "release-it": "^16.1.5",
     "typescript": "^5.2.2"
@@ -76,7 +74,6 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-file-access": ">=3.0.0",
     "react-native-reanimated": ">=2.2.0"
   },
   "react-native-builder-bob": {
@@ -87,5 +84,6 @@
       "module",
       "typescript"
     ]
-  }
+  },
+  "packageManager": "yarn@4.2.1"
 }
