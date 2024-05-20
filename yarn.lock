@@ -2991,19 +2991,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native/virtualized-lists@npm:^0.72.4":
-  version: 0.72.6
-  resolution: "@react-native/virtualized-lists@npm:0.72.6"
-  dependencies:
-    invariant: "npm:^2.2.4"
-    nullthrows: "npm:^1.1.1"
-  peerDependencies:
-    react-native: "*"
-  checksum: 10c0/49b84092069a31c64424d577fc490537b1c0120befd51fc73a589cf374e1a9ff9dabb843cb3129b372cec07c98536f9c0c02d05880a95ad6f5712dc76faed45e
-  languageName: node
-  linkType: hard
-
-"@react-native/virtualized-lists@npm:^0.72.8":
+"@react-native/virtualized-lists@npm:^0.72.4, @react-native/virtualized-lists@npm:^0.72.8":
   version: 0.72.8
   resolution: "@react-native/virtualized-lists@npm:0.72.8"
   dependencies:
@@ -3119,7 +3107,7 @@ __metadata:
     eslint-plugin-prettier: "npm:^5.0.0"
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-react-native-a11y: "npm:^3.3.0"
-    expo-file-system: "npm:^17.0.1"
+    expo-file-system: "npm:~16.0.9"
     jest: "npm:^29.6.4"
     prettier: "npm:^3.0.3"
     react: "npm:18.2.0"
@@ -3309,16 +3297,26 @@ __metadata:
   linkType: hard
 
 "@types/react-native@npm:^0.72.2":
-  version: 0.72.2
-  resolution: "@types/react-native@npm:0.72.2"
+  version: 0.72.8
+  resolution: "@types/react-native@npm:0.72.8"
   dependencies:
     "@react-native/virtualized-lists": "npm:^0.72.4"
     "@types/react": "npm:*"
-  checksum: 10c0/08672d75604df84b3360bdae0693b8aa88ec3e7cf65446e4dae1b79f2279ff0e85f9439650fc908ebc88a8f64e402a43e83dafc82955894e7e1f9c82375a4a54
+  checksum: 10c0/2dde171c2331ac8f6102f9b7a88616c695d158d3140e7b7aee3a393e3645f2aaa202b3411ae371fbbcd28386459fca8d47bd5d3801a0adfdd8815a8ba5c0d5fe
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.2.11":
+"@types/react@npm:*":
+  version: 18.3.2
+  resolution: "@types/react@npm:18.3.2"
+  dependencies:
+    "@types/prop-types": "npm:*"
+    csstype: "npm:^3.0.2"
+  checksum: 10c0/9fb2f1fcf7e889ee4ea7c3c5978df595c66e770e5fd3a245dbdd2589b9b911524c11dab25a6275d8af4e336e4cb5fa850d447884b84c335a187a338c89df99ba
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.2.11":
   version: 18.2.17
   resolution: "@types/react@npm:18.2.17"
   dependencies:
@@ -6416,12 +6414,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-file-system@npm:^17.0.1":
-  version: 17.0.1
-  resolution: "expo-file-system@npm:17.0.1"
+"expo-file-system@npm:~16.0.9":
+  version: 16.0.9
+  resolution: "expo-file-system@npm:16.0.9"
   peerDependencies:
     expo: "*"
-  checksum: 10c0/902913301afd11a2d91b1b9bf053924bfb70f868050e6893854052e589afcc3cb09f0d4cb15194313c6d52dbd7d17ec258c86fc9f2303d1d29d1d745aa6c98d5
+  checksum: 10c0/e43c5ab226ac607b6d01389078012f96e1a0bf44474c20f71dfedd0d6052781837c602bb57b4f534d2dd3e87bdaa754fd73daa8f4f8a78e08ba67e17bba084e5
   languageName: node
   linkType: hard
 

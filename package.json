@@ -29,8 +29,9 @@
   "scripts": {
     "tsc": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
-    "build": "bob build && yarn copy-dts",
+    "build": "bob build && yarn copy-dts && yarn delete-dts.js",
     "copy-dts": "copyfiles -u 1 \"src/**/*.d.ts\" lib/typescript",
+    "delete-dts.js": "find ./lib/commonjs -name '*.d.js*' -delete && find ./lib/module -name '*.d.js*' -delete",
     "release": "release-it",
     "example": "yarn --cwd example",
     "prettier": "prettier \"**/*.{ts,tsx,js}\" --write",
@@ -38,7 +39,7 @@
   },
   "dependencies": {
     "crypto-js": "^4.1.1",
-    "expo-file-system": "^17.0.1"
+    "expo-file-system": "~16.0.9"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
