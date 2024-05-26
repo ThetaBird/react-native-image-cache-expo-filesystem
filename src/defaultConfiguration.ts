@@ -1,4 +1,4 @@
-import { Dirs } from 'react-native-file-access';
+import { Dirs } from './FileManager';
 
 export default {
   baseDir: `${Dirs.CacheDir}/images_cache/`,
