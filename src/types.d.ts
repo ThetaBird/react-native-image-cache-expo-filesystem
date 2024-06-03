@@ -1,14 +1,12 @@
+import { ImageContentFit, ImageLoadEventData } from 'expo-image';
+import React from 'react';
 import {
   AccessibilityRole,
-  ImageLoadEventData,
-  ImageResizeMode,
   ImageSourcePropType,
   ImageStyle,
   ImageURISource,
-  NativeSyntheticEvent,
   StyleProp,
 } from 'react-native';
-import React from 'react';
 
 export interface DownloadOptions {
   headers?: {
@@ -54,10 +52,10 @@ export interface IProps {
   maxAge?: number;
   noCache?: boolean;
   onError?: (error: { nativeEvent: { error: Error } }) => void;
-  onLoad?: (event: NativeSyntheticEvent<ImageLoadEventData>) => void;
+  onLoad?: (event: ImageLoadEventData) => void;
   onLoadEnd?: () => void;
   options?: DownloadOptions;
-  resizeMode?: ImageResizeMode;
+  resizeMode?: ImageContentFit;
   source: string;
   sourceAnimationDuration?: number;
   style?: StyleProp<ImageStyle>;

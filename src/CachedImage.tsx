@@ -6,24 +6,18 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import {
-  ImageLoadEventData,
-  ImageSourcePropType,
-  NativeSyntheticEvent,
-  StyleSheet,
-  View,
-} from 'react-native';
+import { ImageSourcePropType, StyleSheet, View } from 'react-native';
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
 
+import { Image, ImageLoadEventData } from 'expo-image';
 import CacheManager from './CacheManager';
-import { ImageProps, IProps } from './types';
 import { isAndroid, isImageWithRequire, isRemoteImage } from './helpers';
+import { IProps, ImageProps } from './types';
 
-const AnimatedImage = Animated.Image;
 const AnimatedView = Animated.View;
 
 const defaultProps = {
@@ -153,7 +147,7 @@ const CachedImage = (props: IProps & typeof defaultProps) => {
     setError(true);
   };
 
-  const onImageLoad = (e: NativeSyntheticEvent<ImageLoadEventData>): void => {
+  const onImageLoad = (e: ImageLoadEventData): void => {
     if (props.onLoad) {
       props.onLoad(e);
     }
@@ -220,49 +214,60 @@ const CachedImage = (props: IProps & typeof defaultProps) => {
         ) : (
           <View style={[styles.loadingImageStyle]}>
             {loadingSource && (
-              <AnimatedImage
-                accessibilityHint={accessibilityHintLoadingImage}
-                accessibilityLabel={accessibilityLabelLoadingImage}
-                accessibilityRole={accessibilityRoleLoadingSource || 'image'}
-                accessible
-                resizeMode={resizeMode || 'contain'}
-                style={[loadingImageAnimatedStyle, loadingImageStyle]}
-                source={loadingSource}
-              />
+              <AnimatedView
+                style={[
+                  styles.loadingImageStyle,
+                  loadingImageStyle,
+                  loadingImageAnimatedStyle,
+                ]}
+              >
+                <Image
+                  accessibilityHint={accessibilityHintLoadingImage}
+                  accessibilityLabel={accessibilityLabelLoadingImage}
+                  accessibilityRole={accessibilityRoleLoadingSource || 'image'}
+                  accessible
+                  contentFit={resizeMode || 'contain'}
+                  source={loadingSource}
+                  cachePolicy={'memory'}
+                />
+              </AnimatedView>
             )}
           </View>
         ))}
       {thumbnailSource && (
-        <AnimatedImage
-          accessibilityHint={accessibilityHintThumbnail}
-          accessibilityLabel={accessibilityLabelThumbnail}
-          accessibilityRole={accessibilityRoleThumbnail || 'image'}
-          accessible
-          blurRadius={blurRadius || CacheManager.config.blurRadius}
-          onLoad={onThumbnailLoad}
-          resizeMode={resizeMode || 'contain'}
-          source={{ uri: thumbnailSource, ...propsOptions }}
-          style={[style, thumbnailSourceAnimatedStyle]}
-        />
+        <AnimatedView style={[style, thumbnailSourceAnimatedStyle]}>
+          <Image
+            accessibilityHint={accessibilityHintThumbnail}
+            accessibilityLabel={accessibilityLabelThumbnail}
+            accessibilityRole={accessibilityRoleThumbnail || 'image'}
+            accessible
+            blurRadius={blurRadius || CacheManager.config.blurRadius}
+            onLoad={onThumbnailLoad}
+            contentFit={resizeMode || 'contain'}
+            source={{ uri: thumbnailSource }}
+            cachePolicy={'memory'}
+          />
+        </AnimatedView>
       )}
       {imageSource && (
-        <AnimatedImage
-          {...rest}
-          accessibilityHint={accessibilityHint}
-          accessibilityLabel={accessibilityLabel}
-          accessibilityRole={accessibilityRole || 'image'}
-          accessible
-          onError={onImageError}
-          onLoad={onImageLoad}
-          onLoadEnd={props.onLoadEnd}
-          resizeMode={resizeMode || 'contain'}
-          // @ts-ignore, reanimated image doesn't have tintColor typing
-          tintColor={props.tintColor}
-          // @ts-ignore
-          source={imageSource}
-          // @ts-ignore
+        <AnimatedView
           style={[styles.imageStyle, imageSourceAnimatedStyle, imageStyle]}
-        />
+        >
+          <Image
+            {...rest}
+            accessibilityHint={accessibilityHint}
+            accessibilityLabel={accessibilityLabel}
+            accessibilityRole={accessibilityRole || 'image'}
+            accessible
+            onError={onImageError}
+            onLoad={onImageLoad}
+            onLoadEnd={props.onLoadEnd}
+            contentFit={resizeMode || 'contain'}
+            tintColor={props.tintColor}
+            source={imageSource}
+            cachePolicy={'memory'}
+          />
+        </AnimatedView>
       )}
     </View>
   );

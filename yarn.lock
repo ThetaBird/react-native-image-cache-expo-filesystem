@@ -2918,6 +2918,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native/assets-registry@npm:~0.74.83":
+  version: 0.74.83
+  resolution: "@react-native/assets-registry@npm:0.74.83"
+  checksum: 10c0/e37d545b2398cd76891d468b80407c04d9a8fe116e958f440991dfba0ed740195277b62f38b7aae7a19b8aa9c68cf6f09875b67e82f71fed58ba8d4568edadc1
+  languageName: node
+  linkType: hard
+
 "@react-native/codegen@npm:^0.72.6":
   version: 0.72.6
   resolution: "@react-native/codegen@npm:0.72.6"
@@ -3108,6 +3115,7 @@ __metadata:
     eslint-plugin-react-hooks: "npm:^4.6.0"
     eslint-plugin-react-native-a11y: "npm:^3.3.0"
     expo-file-system: "npm:~16.0.9"
+    expo-image: "npm:^1.10.6"
     jest: "npm:^29.6.4"
     prettier: "npm:^3.0.3"
     react: "npm:18.2.0"
@@ -6420,6 +6428,17 @@ __metadata:
   peerDependencies:
     expo: "*"
   checksum: 10c0/e43c5ab226ac607b6d01389078012f96e1a0bf44474c20f71dfedd0d6052781837c602bb57b4f534d2dd3e87bdaa754fd73daa8f4f8a78e08ba67e17bba084e5
+  languageName: node
+  linkType: hard
+
+"expo-image@npm:^1.10.6":
+  version: 1.12.9
+  resolution: "expo-image@npm:1.12.9"
+  dependencies:
+    "@react-native/assets-registry": "npm:~0.74.83"
+  peerDependencies:
+    expo: "*"
+  checksum: 10c0/9c9b020978036c9a81134759024eae5d931d8f2c6480619197ee06251ff57a4a34edac1e4a1442adcba52d942c3af2da8f66534c9f8a7518fc4d77d3b711863b
   languageName: node
   linkType: hard
 
